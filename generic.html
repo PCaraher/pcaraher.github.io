@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Generic Page - Massively by HTML5 UP</title>
+		<title>Philip Caraher - AR</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -19,21 +19,20 @@
 
 				<!-- Header -->
 					<header id="header">
-						<a href="index.html" class="logo">Massively</a>
+						<a href="#header" class="logo">Augmented Reality</a>
 					</header>
 
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li><a href="index.html">This is Massively</a></li>
-							<li class="active"><a href="generic.html">Generic Page</a></li>
-							<li><a href="elements.html">Elements Reference</a></li>
+							<li> <a href="index.html">Me</a></li>
+							<li class="active"><a href="generic.html">Augmented Reality</a></li>
+							<li> <a href="unity.html">Unity</a></li>
+							<li> <a href="3dgraphics.html">3D Graphics Programming</a></li>
 						</ul>
 						<ul class="icons">
-							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
+							<li><a href="https://linkedin.com/in/philipcaraher" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="https://github.com/PCaraher" class="icon fa-github"><span class="label">GitHub</span></a></li>
 						</ul>
 					</nav>
 
@@ -43,64 +42,52 @@
 						<!-- Post -->
 							<section class="post">
 								<header class="major">
-									<span class="date">April 25, 2017</span>
-									<h1>This is a<br />
-									Generic Page</h1>
-									<p>Aenean ornare velit lacus varius enim ullamcorper proin aliquam<br />
-									facilisis ante sed etiam magna interdum congue. Lorem ipsum dolor<br />
-									amet nullam sed etiam veroeros.</p>
+									<h1>Match It AR</h1>
+									<p>Match It AR is a match two game mechanic but, 
+										in a 3D, augmented reality game. The augmented part of the game 
+										is the play area where the interaction with the game objects takes place. 
+										Within this play area, the player matches targets much like in Bejeweled, 
+										by lining them up in a row of two or more, but in this case the line-up is 
+										done using a raycast from the camera. Once the lined-up targets are destroyed, 
+										new ones are spawned in the scene at new positions.</p>
 								</header>
-								<div class="image main"><img src="images/pic01.jpg" alt="" /></div>
-								<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur sapien risus, commodo eget turpis at, elementum convallis enim turpis, lorem ipsum dolor sit amet nullam.</p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus. Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum.</p>
+								<div class="image main"><img src="images/MatchItAR2.jpg" alt="" /></div>
+								<p>The game was developed in Unity 3D and used ARCore for the AR elements of the game. 
+									The AR scanning was done using the ARCore. I followed steps from Google’s codelabs 
+									introduction to ARCore to set up the tracking session. ARCore uses motion tracking and environmental 
+									understanding to scan flat surfaces and track features. I then look for any Touch input and 
+									check if it hits any of the tracked planes, if so then I create an anchor at that position. 
+									The player can match targets. There’s a ray being cast every frame to check for targets so the 
+									player doesn’t have to take any action like touching a button. If the ray hits a target then it 
+									checks everything else the ray is hitting. If the first two hits have the same colour then that 
+									makes a match. Once they’re matched they get destroyed and respawned using the initial spawning code. 
+									Three arrays of floats, hard coded, store values that are used to give the target a position and no 
+									targets share the same position.
+									</p>
+								<p>This game formed part of my undergraduate project which looked at aspects of UX design in mobile AR games. 
+									The code repository, full text, and presentation powerpoint are available below. </p>
+								<ul class="actions special">
+										<li><a href="https://github.com/PCaraher/MatchItAR" class="button large">GitHub Repo</a></li>
+										<li><a href="documents/EEE521 Final Report Augmented Reality 3D Puzzle Game Philip Caraher.pdf" target="_blank" class="button large">Full Text</a></li>
+										<li><a href="https://www.dropbox.com/s/g5tqbkynkd622br/Match%20It%20AR%20showcase.pptx?dl=0" target="_blank" class="button large">Powerpoint</a></li>
+								</ul>
+								<iframe width="810" height="465" src="https://www.youtube.com/embed/Dqc267CPIOE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 							</section>
 
 					</div>
 
 				<!-- Footer -->
 					<footer id="footer">
-						<section>
-							<form method="post" action="#">
-								<div class="fields">
-									<div class="field">
-										<label for="name">Name</label>
-										<input type="text" name="name" id="name" />
-									</div>
-									<div class="field">
-										<label for="email">Email</label>
-										<input type="text" name="email" id="email" />
-									</div>
-									<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="3"></textarea>
-									</div>
-								</div>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</form>
-						</section>
-						<section class="split contact">
+						<section class="split contact">							
 							<section class="alt">
-								<h3>Address</h3>
-								<p>1234 Somewhere Road #87257<br />
-								Nashville, TN 00000-0000</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p><a href="#">(000) 000-0000</a></p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p><a href="#">info@untitled.tld</a></p>
+								<h3>Email me</h3>
+								<p><a href="mailto:caraherphilip@gmail.com">caraherphilip@gmail.com</a></p>
 							</section>
 							<section>
 								<h3>Social</h3>
 								<ul class="icons alt">
-									<li><a href="#" class="icon alt fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="https://linkedin.com/in/philipcaraher" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="https://github.com/PCaraher" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
 								</ul>
 							</section>
 						</section>
@@ -108,7 +95,7 @@
 
 				<!-- Copyright -->
 					<div id="copyright">
-						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+						<ul><li>&copy; Philip Caraher</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
 					</div>
 
 			</div>

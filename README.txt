@@ -8,6 +8,8 @@ Massively template provided by HTML5 UP.
 
 Credits:
 
+	BG Image:
+		challenge (WallpapersHome.com)
 	Icons:
 		Font Awesome (fontawesome.io)
 

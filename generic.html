@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Philip Caraher - AR</title>
+		<title>Other Work</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -19,17 +19,16 @@
 
 				<!-- Header -->
 					<header id="header">
-						<a href="#header" class="logo">Augmented Reality</a>
+						<a href="#header" class="logo">Other Work</a>
 					</header>
 
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
 							<li> <a href="index.html#header">Me</a></li>
-							<li class="active"><a href="generic.html">Augmented Reality</a></li>
 							<li> <a href="unity.html">Unity</a></li>
-							<li> <a href="3dgraphics.html">3D Graphics Programming</a></li>
-							<li> <a href="reach_screenshots.html">Reach Screenshots</a></li>
+							<li> <a href="unreal.html">Unreal</a></li>
+							<li class="active"><a href="generic.html">Other Work</a></li>
 						</ul>
 						<ul class="icons">
 							<li><a href="https://linkedin.com/in/philipcaraher" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
@@ -42,43 +41,92 @@
 
 						<!-- Post -->
 							<section class="post">
-								<div class="row aln-center">
-									<h1>Match It AR</h1>
-								</div>
-									<p>Match It AR is a match two game mechanic but, 
-										in a 3D, augmented reality game. The augmented part of the game 
-										is the play area where the interaction with the game objects takes place. 
-										Within this play area, the player matches targets much like in Bejeweled, 
-										by lining them up in a row of two or more, but in this case the line-up is 
-										done using a raycast from the camera. Once the lined-up targets are destroyed, 
-										new ones are spawned in the scene at new positions.</p>
-								
-								<div class="image main"><img src="images/MatchItAR2.jpg" alt="" /></div>
-								<p>The game was developed in Unity 3D and used ARCore for the AR elements of the game. 
-									The AR scanning was done using the ARCore. I followed steps from Google’s codelabs 
-									introduction to ARCore to set up the tracking session. ARCore uses motion tracking and environmental 
-									understanding to scan flat surfaces and track features. I then look for any Touch input and 
-									check if it hits any of the tracked planes, if so then I create an anchor at that position. 
-									The player can match targets. There’s a ray being cast every frame to check for targets so the 
-									player doesn’t have to take any action like touching a button. If the ray hits a target then it 
-									checks everything else the ray is hitting. If the first two hits have the same colour then that 
-									makes a match. Once they’re matched they get destroyed and respawned using the initial spawning code. 
-									Three arrays of floats, hard coded, store values that are used to give the target a position and no 
-									targets share the same position.
-									</p>
-								<p>This game formed part of my undergraduate project which looked at aspects of UX design in mobile AR games. 
-									The code repository, full text, and presentation powerpoint are available below. </p>
-								<ul class="actions special">
-										<!-- <li><a href="https://github.com/PCaraher/MatchItAR" class="button large">GitHub Repo</a></li> -->
-										<li><a href="documents/EEE521 Final Report Augmented Reality 3D Puzzle Game Philip Caraher.pdf" target="_blank" class="button large">Full Text</a></li>
-										<li><a href="https://www.dropbox.com/s/g5tqbkynkd622br/Match%20It%20AR%20showcase.pptx?dl=0" target="_blank" class="button large">Powerpoint</a></li>
-								</ul>
-								<div class="box alt">
-									<div class="video-container">
-										<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Dqc267CPIOE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-										</iframe>
+								<div class="box">
+									<h3>CLEAR Dementia Care App</h3>
+									<div class="row gtr-50 gtr-uniform">
+										<div class="col-4"><span class="image fit"><img src="images/clear0.webp" alt=""></span></div>
+										<div class="col-4"><span class="image fit"><img src="images/clear3.webp" alt=""></span></div>
+										<div class="col-4"><span class="image fit"><img src="images/clear4.webp" alt=""></span></div>
 									</div>
-								</div>
+									<p style = "padding-top: 10px;">
+										This was the largest project I took on during my time at Sentireal and it was for the Northern Health and Social Care Trust.
+										They have a team of dementia care researchers and psychologists that put together a system called C.L.E.A.R that is meant to help carers
+										of people with dementia.<br>
+										
+										The project was to create an app that would aid carers by providing learning information about the CLEAR system as well as tools 
+										to help utilise the CLEAR principles.<br>
+
+										The app was developed with React Native and Expo tools as we were required to release on both Android and iOS devices. 
+										I had never worked with Javascript before so I learned whilst doing the project.<br>
+
+										Over the course of around a year I developed the project to feature:
+										<ul>
+											<li>
+												A wordpress driven information section. The app queries a wordpress content management site that returns a json object. This object then gets
+												deserialised into a SQLite database. I would definitely not do it this way second time around, at the time I thought this would be a good way for 
+												pages within the app to be able to link to each other but it overcomplicated everything and the json object was probably enough to generate the 
+												page views on the app.
+											</li>
+											<li>
+												Patient profile creation. The user is able to create password protected profiles to keep track of individual patient information.
+											</li>
+											<li>
+												Time tracking system. The user can record a time and date entry with information and filter tags about what state the patient was in at that 
+												date and time.
+											</li>
+											<li>
+												The patient profiles and time data can be backed up to an Amazon S3 bucket over an encrypted connection.
+											</li>
+											<li>
+												The time data is displayed in a custom date and time range view and can be exported to a pdf file.
+											</li>
+										</ul>
+									</p>										
+									<ul class="actions special">
+											<li><a href="https://play.google.com/store/apps/details?id=com.nhsct.clearcare&hl=en&gl=US" class="button large" target="_blank" rel="noopener noreferrer">Google Play</a></li>
+									</ul>	
+								</div>		
+
+								<div class="box">
+									<h3>Echoes of the Causeway</h3>
+									<div class="row gtr-50 gtr-uniform">
+										<div class="col-12"><span class="image fit"><img src="images/seagods0.jpg" alt=""></span></div>
+									</div>
+									<p style = "padding-top: 10px;">
+										This project was in partnership with the Causeway Coast and Glens Borough Council amongst other funders to create 
+										a companion tourism application. It featured information about multiple historical and fantastical sites within the 
+										council area, audio pieces with actors performing stories from the area, and little interactive bits to highlight parts
+										of the stories.<br>
+
+										My part of development was in Android Studio with Java. I set up all of the screens and navigation and implemented the 
+										bespoke UI and interactive elements.
+
+									</p>										
+									<ul class="actions special">
+											<li><a href="https://www.sentireal.com/post/echoes-of-the-causeway-mobile-app" class="button large" target="_blank" rel="noopener noreferrer">Blog Post</a></li>
+											<li><a href="https://apps.apple.com/gb/app/echoes-of-the-causeway/id1493989236?platform=iphone" class="button large" target="_blank" rel="noopener noreferrer">App Store</a></li>
+											
+									</ul>	
+								</div>	
+
+								<div class="box">
+									<h3>LYRIC theatre VR App</h3>
+									<div class="row gtr-50 gtr-uniform">
+										<div class="col-6"><span class="image fit"><img src="images/lyric0.webp" alt=""></span></div>
+										<div class="col-6"><span class="image fit"><img src="images/lyric1.webp" alt=""></span></div>
+									</div>
+									<p style = "padding-top: 10px;">
+										My first VR project. In partnership with a local theatre company. They wanted a VR app with multiple experiences.
+										We filmed multiple 360 videos for playback in the app. We made a 3D underwater experience to be a part of one of their 
+										recycling projects. You had to pick up plastic bottles from a river bed while walking along the bed.<br>
+
+										I used the Virtual Reality Toolkit (VRTK) package for Unity to set up common VR interactions and scenes like point and select and grabbing. All of the scenes use the 
+										pointer interactions for UI interaction and the underwater scene uses the grab interaction as well.
+									</p>										
+									<ul class="actions special">
+											<li><a href="https://www.sentireal.com/post/lyric-theatre-vr-project-blackout" class="button large" target="_blank" rel="noopener noreferrer">Blog post</a></li>
+									</ul>	
+								</div>	
 							</section>
 
 					</div>
@@ -87,11 +135,7 @@
 					<footer id="footer">
 							<section class="split contact">							
 								<section>
-									<div class="row">
-										<div class="col-6 col-12-small">
-											<h3>Email me</h3>
-											<p><a href="mailto:caraherphilip@gmail.com">caraherphilip@gmail.com</a></p>
-										</div>									
+									<div class="row">						
 										<div class="col-6 col-12-small">
 											<h3>Social</h3>
 											<ul class="icons alt">

@@ -26,10 +26,9 @@
 					<nav id="nav">
 						<ul class="links">
 							<li> <a href="index.html#header">Me</a></li>
-							<li> <a href="generic.html">Augmented Reality</a></li>
 							<li class="active"><a href="unity.html">Unity</a></li>
-							<li> <a href="3dgraphics.html">3D Graphics Programming</a></li>
-							<li> <a href="reach_screenshots.html">Reach Screenshots</a></li>
+							<li> <a href="unreal.html">Unreal</a></li>
+							<li> <a href="generic.html">Other Work</a></li>
 						</ul>
 						<ul class="icons">
 							<li><a href="https://linkedin.com/in/philipcaraher" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
@@ -43,47 +42,165 @@
 						<!-- Post -->
 						<section class="Post">
 							<div class="box">
-								<h3>DIY Saga</h3>
-								<p><span class="image left"><img src="images/DIYSaga.jpg" alt="" /></span>
-									DIY Saga is a demo of a mobile game built for Android where the 
-									player completes tasks within a time limit to advance to the next level. 
-									Developed for a university assignment and built using Unity. 
-									The purpose of this project was to investigate the current popular 
-									games on the market and create a demo game demonstrating understanding 
-									of popular game styles, mechanics, and developer insights.
+								<h3>Dynasty of the Sands</h3>
+								<div class="row gtr-50 gtr-uniform">
+									<div class="col-6"><span class="image fit"><img src="images/dots_village.jpg" alt=""></span></div>
+									<div class="col-6"><span class="image fit"><img src="images/dots_ui.jpg" alt=""></span></div>
+								</div>
+								<p style = "padding-top: 10px;">
+									Dynasty of the Sands is a colony sim survival city builder set in ancient Egypt.
+									This is the first project I started on when I joined the Rocket Flair team so I've 
+									worked on a lot of areas of the project which includes amongst other things:
 								</p>
-								<ul class="actions special">
-										<li><a href="https://github.com/PCaraher/diy-saga" class="button large">GitHub Repo</a></li>
-										<li><a href="documents/COM631 Assignment 1 Report Philip Caraher B00699092.pdf" target="_blank" class="button large">Design Doc</a></li>
-								</ul>	
-							</div>			
+								<dl>
+									<dt>Villager Jobs</dt>
+									<dd>
+										<p>
+											The Villager Jobs system is kind of based off of a state machine. Each villager has a Job and within that Job class they have 
+											specific behaviour, but each Job also has a set of Actions(States) that they can be in and each of these Actions has more specific
+											behaviour. So for instance a Villager can be a Farmer which is a Job and as part of that Job there are Actions like SearchForPlot, Planting,
+											Harvesting, DeliveringResources etc. These Actions separate out the behaviour into classes which I designed and implemented to make it easier
+											to create Jobs and behaviour for villagers as well as make it more readable.
+										</p>
+									</dd>
+									<dt>Lenses</dt>
+									<dd>
+										<p>
+											The main example of this is the Water Lens. The goal was to create a visual to show the range of water sources therefore knowing if a 
+											villager has access to drinking water.<br>
 
-							<div class="box">
-								<h3>Recycle Michael</h3>
-								<p><span class="image left"><img src="images/RecMichael.jpg" alt=""/></span>
-									Recycle Michael was a Unity project for a second year university module where 
-									the aim was to design and make a mobile game focusing on monetization strategy 
-									and creating a good technical specification. The game I came up with was "Recycle Michael" 
-									in which you manage a recycling facility and clean up the city which is undergoing a trash crisis.
-								</p>
+											<b>Solution:</b> I use the pathfinding grid along with the water nodes to make a texture or "water map" with different types of water (Dirty & Clean) corresponding
+											to a different colour channel on the texture. I do it this way so that the ShaderGraph shader can change what colours are used for display 
+											based on what colourblind mode is selected.
+										</p>
+									</dd>
+									<dt>Terrain tools</dt>
+									<dd>
+										<p>
+											The game requires changing terrain height maps and splat maps at runtime so we need ways to fetch that data.<br>
+
+											<b>Solution:</b> I wrote some functionality to fetch splatmap data from the current terrain as well as neighbouring terrains 
+											within the bounds of a rect. We need access to the specific splat map data because the weights are used for ground
+											efficiency calculations like Farming or Mudpits.
+										</p>
+									</dd>
+									<dt>Performance</dt>
+									<dd>
+										<p>
+											It's important to keep on top of performance so I frequently check out CPU and GPU performance as well as memory management.
+											If there's anything strange or areas where there's spikes in usage I'll look deeper to see what if any refactors are required.
+										</p>
+									</dd>
+									<dt>Resource Gathering</dt>
+									<dd>
+										<p>
+											The Gatherers and Woodcutters interact with the trees and bushes to get resources, but these are just TreeInstances which 
+											only holds certain data that is useful but we need more for resource gatherers.<br>
+
+											<b>Solution:</b> Any resource gathering building finds all TreeInstances in range and will create an instance of an object that 
+											holds all relevant data from the TreeInstance as well as data for the resource like the current amount available or time before 
+											regrowth. There's also an object manager that keeps control of all of these object instances.
+										</p>
+									</dd>
+									<dt>Unity Jobs</dt>
+									<dd>
+										<p>
+											Part of the gathering system requires that there be UI to tell the player how many valid resources there are in the area of 
+											a building while it's being placed.<br>
+
+											<b>Solution:</b> The building looks at all of the trees on the current and neighbouring terrains for trees in range, 
+											so since there is a possibility that there are thousands of trees being evaluated and it needs to be done quickly 
+											I thought that using the Unity Jobs system would be appropriate. The job does distance checks on all of the tree 
+											positions and outputs the tree IDs of the ones in range.
+										</p>
+									</dd>
+									<dt>UI</dt>
+									<dd>
+										<p>
+											With large amounts of UI such as in this project it's kind of a daunting task to keep it correctly updated. Lots of 
+											elements need to correctly reflect current stats and amounts etc.<br>
+
+											<b>Solution:</b> So I made an effort to implement something like an MVC pattern to handle UI updates when the state 
+											of certain objects change, like the health of a villager or construction progress of a building.
+										</p>
+									</dd>
+								</dl>										
 								<ul class="actions special">
-										<li><a href="https://github.com/PCaraher/RecycleMichael" class="button large">GitHub Repo</a></li>
-										<li><a href="documents/COM629_Assignment1_Philip_Caraher_B00699092.pdf" target="_blank" class="button large">Design Doc</a></li>
-								</ul>
+										<li><a href="https://store.steampowered.com/app/1143070/Dynasty_of_the_Sands/" class="button large" target="_blank" rel="noopener noreferrer">Steam</a></li>
+								</ul>	
+							</div>		
+							
+							<div class="box">
+								<h3>Surviving the Abyss</h3>
+								<div class="row gtr-50 gtr-uniform">
+									<div class="col-6"><span class="image fit"><img src="images/sta0.jpg" alt=""></span></div>
+									<div class="col-6"><span class="image fit"><img src="images/sta1.jpg" alt=""></span></div>
+								</div>
+								<p style = "padding-top: 10px;">
+									Surviving the Abyss is a colony sim survival city builder with an element of horror and is the third game in the "Surviving" franchise.
+									I started working on this project shortly after I joined Rocket Flair in 2021 to port over one of the systems from DotS but I've worked
+									on a lot of the core systems since.
+								</p>
+
+								<dl>
+									<dt>Octagonal grid</dt>
+									<dd>
+										<p>
+											The grid is an 8 direction grid graph which uses the A* Pathfinding Project Package, this allowed us to create a unique looking octagonal grid.
+											It presented some challenges with building placement as not all of the grid spaces are immediately adjacent and not 
+											all of the buildings are the same footprints. For instance, a building with a footprint of 2x2 and a building with a footprint of
+											2x3 cannot use the same position snapping or rotation code.<br>
+											This grid drives a number of the decisions for other systems as well.
+										</p>
+									</dd>
+									<dt>Building footprints</dt>
+									<dd>
+										<p>
+											Buildings are designed with specific rules, they have to occupy an area that is in multiples of the octagonal grid spaces such as 2x2 or 
+											3x5. They can be irregular shaped but they must follow rules driven by the grid. This means we can store exactly which grid spaces a building
+											would occupy which comes in handy for our building placement validation as each node in the grid graph also stores info about the Terrain.
+										</p>
+									</dd>
+									<dt>Tunnel System</dt>
+									<dd>
+										<p>
+											The grid is an 8 direction grid graph so each grid space is a node for pathfinding and the tunnel system uses this pathfinding grid to pick
+											which waypoints to build a tunnel along, which means each grid space can be thought of as a potential starting point for a tunnel as well. 
+											This all leads to a system where we can specify which of the gridspaces a building occupies should be a TunnelConnection and which direction the connection should be.<br>
+											
+											Another challenging part of this system is how to create junctions where tunnels join other tunnels. The solution became a sort of direction ID
+											which would correspond to a specific Junction prefab along with a scale and rotation to apply to the junction.
+										</p>
+									</dd>
+									<dt>Performance</dt>
+									<dd>
+										<p>
+											StA plays with light and dark a lot so there are some interesting methods to save on performance. LOD components change which mesh 
+											is used on an object based on the object's size on screen, but since a lot of the objects are in the dark I designed an LOD swapper 
+											that would change the LOD thresholds based on the objects proximity to a light source
+										</p>
+									</dd>
+									<dt>Threat system</dt>
+									<dd>
+										<p>
+											The anomaly monster in the game runs on a system kind of like a state machine. It has different states in which
+											it can perform different actions based on the current stage of the game as well as number and types of buildings 
+											present.
+										</p>
+									</dd>
+								</dl>										
+								<ul class="actions special">
+										<li><a href="https://store.steampowered.com/app/1143070/Dynasty_of_the_Sands/" class="button large" target="_blank" rel="noopener noreferrer">Steam</a></li>
+								</ul>	
 							</div>
 						</section>
-
 					</div>
 
 				<!-- Footer -->
 					<footer id="footer">
 							<section class="split contact">							
 								<section>
-									<div class="row">
-										<div class="col-6 col-12-small">
-											<h3>Email me</h3>
-											<p><a href="mailto:caraherphilip@gmail.com">caraherphilip@gmail.com</a></p>
-										</div>									
+									<div class="row">							
 										<div class="col-6 col-12-small">
 											<h3>Social</h3>
 											<ul class="icons alt">

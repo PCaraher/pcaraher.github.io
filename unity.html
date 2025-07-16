@@ -193,6 +193,72 @@
 										<li><a href="https://store.steampowered.com/app/1143070/Dynasty_of_the_Sands/" class="button large" target="_blank" rel="noopener noreferrer">Steam</a></li>
 								</ul>	
 							</div>
+
+							<div class="box">
+								<h3>SkyRig</h3>
+								<div class="row gtr-50 gtr-uniform">
+									<div class="col-6"><span class="image fit"><img src="images/skyrig_1.jpg" alt=""></span></div>
+									<div class="col-6"><span class="image fit"><img src="images/skyrig_2.jpg" alt=""></span></div>
+								</div>
+								<p style = "padding-top: 10px;">
+									SkyRig is a sci-fi systems-builder focused on chemistry and automation. The player builds 3D rigs at various layers of a gas giant planet 
+									and configures parts and pipes to form production lines in the rigs to collect and synthesize elements for completing contracts. The game 
+									uses the Unity Jobs system to run each rigs automation in parallel so you can have many production lines working at the same time.
+								</p>
+								<dl>
+									<dt>Temperature System</dt>
+									<dd>
+										<p>
+											This system runs as a Jobs system so all of the rigs in the game perform these checks in parallel with the other systems like 
+											fluid flow, power system and resource production. Every element collected from the atmosphere by rigs is represented inside the rigs pipes 
+											as an Entity with ECS so the temperature system compares each entity against each temperature effect zone within the rig to see whether its 
+											temperature should change.
+										</p>
+									</dd>
+									<dt>Power System</dt>
+									<dd>
+										<p>
+											This system also runs as a Job, it goes through each part that uses power in each rig and adds that parts power requirement to a shared total on a 
+											layer by layer basis. So the rigs within a layer use a priority level to determine if they can get fully powered.
+										</p>
+									</dd>
+									<dt>Grid Guidance System</dt>
+									<dd>
+										<p>
+											This game has a 3D builder component so there are some UX challenges that come with it. The build mode is in a 3D space with no floor/shadows as it's 
+											floating in the atmospshere so there is little sense of perspective when it comes to how parts align with each other either on the same vertical level 
+											or above/below each other.<br>
+
+											<b>Solution:</b> I made a translucent grid and a "Footprint" for each object. The footprint shader is scalable for parts of various sizes and 
+											has multiple modes to differentiate parts on different height levels.
+										</p>
+									</dd>
+									<dt>Camera & Layer Transitions</dt>
+									<dd>
+										<p>
+											The games environment is set in the upper atmosphere of a gas giant so the player can descend/ascend through the layers. This is done with a little bit 
+											of trickery because Unity's Volumetric Cloud volume doesn't easily change altitude. The orbital elevator exists as a scale object in the scene with large 
+											distances between each "station" but each layer has it's own local volume to override some cloud properties and change various lighting and camera settings. 
+											The altitude of the cloud volume doesn't change but the entire elevator structure does a vertical translation each time the player navigates (All hidden behind 
+											a full screen wipe transistion).
+
+											All of the camera work is using Unitys Cinemachine package for the handy blend functionality.
+										</p>
+									</dd>
+									<dt>Sector Shader</dt>
+									<dd>
+										<p>
+											The layers of the game are split into a radial grid with each sector being a selectable object that can have a rig built inside it. The grid is 
+											generated with a ShaderGraph shader using polar coordinates and procedural shapes to create the web style look. This can then be scaled so the grid 
+											can have as many sectors as needed. Then there's a separate script that generates a series of basic meshes that act as the selectable part of the 
+											sector.
+										</p>
+									</dd>
+								</dl>										
+								<ul class="actions special">
+										<li><a href="https://store.steampowered.com/app/3168110/SkyRig/" class="button large" target="_blank" rel="noopener noreferrer">Steam</a></li>
+								</ul>	
+							</div>
 						</section>
 					</div>
 

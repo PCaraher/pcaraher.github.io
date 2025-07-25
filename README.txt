@@ -1,4 +1,4 @@
-This is my portfolio of both personal and university projects. Built using the 
+This is my portfolio of both personal and professional projects. Built using the 
 Massively template provided by HTML5 UP.
 
 
